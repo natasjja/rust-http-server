@@ -1,6 +1,4 @@
 fn main() {
-    let get = Method::GET;
-    let delete = Method::DELETE;
     let ip: String = "127.0.0.1:8080".to_string();
 
     let server = Server::new(ip);
