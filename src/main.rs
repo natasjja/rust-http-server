@@ -1,5 +1,3 @@
-use http::Method;
-use http::Request;
 use server::Server;
 
 mod http;
@@ -11,4 +9,3 @@ fn main() {
     let server = Server::new(ip);
     server.run();
 }
- 
