@@ -1,6 +1,6 @@
-use crate::http::Request;
+use crate::http::{Request, Response, StatusCode};
 use std::convert::TryFrom;
-use std::io::Read;
+use std::io::{Read, Write};
 use std::net::TcpListener;
 pub struct Server {
     addr: String,
@@ -28,6 +28,8 @@ impl Server {
                             match Request::try_from(&buffer[..]) {
                                 Ok(request) => {
                                     println!("{:?}", request);
+                                    let response = Response::new(StatusCode::Ok, Some("<h1>It works!</h1>".to_string()));
+                                    write!(stream, "{}", response);
                                 }
                                 Err(e) => println!("Failed to pass request: {}", e),
                             }
